@@ -1,0 +1,9 @@
+config:
+  default: true
+  MD013: false # line length: prose paragraphs are one line each
+  MD046:
+    style: fenced
+globs:
+  - "docs/**/*.md"
+ignores:
+  - "docs/overrides/**"

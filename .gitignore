@@ -34,9 +34,9 @@ dist/
 .env
 .env.*
 
-/.quarto/
-/_site/
-**/*.quarto_ipynb
+# Docs site build output
+site/
+.venv/
 
 # dev
 CLAUDE.md

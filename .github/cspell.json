@@ -1,0 +1,28 @@
+{
+  "version": "0.2",
+  "language": "en-GB",
+  "globRoot": "..",
+  "files": [
+    "docs/**/*.md"
+  ],
+  "ignorePaths": [
+    "docs/images/**",
+    "docs/overrides/**"
+  ],
+  "words": [
+    "Arduino",
+    "blogspot",
+    "Davide",
+    "davidegironi",
+    "DDNS",
+    "duckdns",
+    "forcentp",
+    "forcesync",
+    "Gironi",
+    "RSSI",
+    "sstaub",
+    "testduck",
+    "TIMEZONE",
+    "tzapu"
+  ]
+}

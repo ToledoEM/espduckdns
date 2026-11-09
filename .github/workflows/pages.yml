@@ -1,4 +1,4 @@
-name: Docs site
+name: Pages
 
 # Every push and pull request to main lints and spellchecks the docs and builds
 # them with Zensical in strict mode. Pushes to main also publish the site to the
@@ -20,7 +20,7 @@ on:
         type: boolean
 
 concurrency:
-  group: docs-${{ github.ref }}
+  group: pages-${{ github.ref }}
   cancel-in-progress: false
 
 # Jobs grant their own permissions; nothing by default.

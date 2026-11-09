@@ -1,14 +1,6 @@
----
-title: "ESP32 DuckDNS Client"
-subtitle: "Standalone Dynamic DNS client for DuckDNS.org"
-description: "A robust, feature-rich ESP32 firmware to keep your DuckDNS domain pointed to your home's dynamic IP address."
----
+# ESP32 DuckDNS Client
 
-::: {.hero-banner}
-<img src="https://toledoem.github.io/www/ducky_icon.png" alt="DuckDNS duck icon" class="hero-icon"/>
-
-**Standalone DDNS client** for [DuckDNS.org](https://www.duckdns.org) running on an **ESP32** microcontroller — no cloud service, no router dependency.
-:::
+Standalone DDNS client for [DuckDNS.org](https://www.duckdns.org) running on an ESP32 microcontroller. No cloud service, no router dependency.
 
 ## Overview
 
@@ -26,14 +18,13 @@ Any ESP32 development board works. GPIO 2 is used for status LED output.
 
 ### Software & Libraries
 
-::: {.callout-note}
-Requires **Arduino IDE** with the **ESP32 board support package** installed.
-:::
+!!! note
+    Requires **Arduino IDE** with the **ESP32 board support package** installed.
 
 Install via Arduino Library Manager (`Sketch › Include Library › Manage Libraries…`):
 
 | Library | Author |
-|---------|--------|
+| --- | --- |
 | `WiFiManager` | tzapu |
 | `Ticker` | sstaub |
 
@@ -68,7 +59,7 @@ After connecting, find the device on your network:
 Open the IP in a browser → click **Settings** → log in with:
 
 | Field | Default |
-|-------|---------|
+| --- | --- |
 | Username | `user` |
 | Password | `pass` |
 
@@ -88,15 +79,15 @@ Click **Save Settings** — device reboots and starts updating.
 
 ### Status Page
 
-![Status page showing uptime and last sync](images/stableuptime.png){.screenshot}
+![Status page showing uptime and last sync](images/stableuptime.png)
 
 Shows current IP, last update time, next update countdown, NTP sync status, WiFi RSSI, and the in-memory log ring.
 
 ### Settings Page
 
-![Settings form](images/webclient_3.png){.screenshot}
+![Settings form](images/webclient_3.png)
 
-![Settings form (continued)](images/webclient_4.png){.screenshot}
+![Settings form (continued)](images/webclient_4.png)
 
 Basic Auth protected (`user` / `pass` by default — change `ADMIN_USERNAME` / `ADMIN_PASSWORD` in the sketch before flashing).
 
@@ -104,7 +95,7 @@ Basic Auth protected (`user` / `pass` by default — change `ADMIN_USERNAME` / `
 
 `GET /api/status` — no authentication required.
 
-![API JSON response](images/apijson.png){.screenshot}
+![API JSON response](images/apijson.png)
 
 ```json
 {
@@ -146,7 +137,7 @@ Basic Auth protected (`user` / `pass` by default — change `ADMIN_USERNAME` / `
 ### EEPROM Layout
 
 | Offset | Content |
-|--------|---------|
+| --- | --- |
 | `0` | `ddnsConfig` struct (~128 bytes), init marker `0x10` |
 | `128` | Persistent log count (`int`) + `PersistentLogEntry[20]` ring |
 
@@ -157,7 +148,7 @@ Basic Auth protected (`user` / `pass` by default — change `ADMIN_USERNAME` / `
 ### Logging
 
 | Buffer | Location | Size |
-|--------|----------|------|
+| --- | --- | --- |
 | In-memory ring | RAM | 8 entries |
 | Persistent ring | EEPROM | 20 entries (optional) |
 
@@ -172,7 +163,7 @@ Logs created before NTP sync have `timestamp_valid=false`. After sync, `updatePe
 ### Web Endpoints
 
 | Route | Auth | Action |
-|-------|------|--------|
+| --- | --- | --- |
 | `/` | None | Status page |
 | `/settings` | Basic Auth | GET `?save=1` saves config + reboots |
 | `/forcesync` | None | Triggers DDNS update → 302 `/` |
@@ -184,7 +175,7 @@ Logs created before NTP sync have `timestamp_valid=false`. After sync, `updatePe
 ## LED Status
 
 | Pattern | Meaning |
-|---------|---------|
+| --- | --- |
 | Fast blink | WiFiManager AP mode (config portal active) |
 | Slow blink | WiFi connecting |
 | Steady on | WiFi connected |
@@ -194,9 +185,8 @@ Logs created before NTP sync have `timestamp_valid=false`. After sync, `updatePe
 
 ## Security
 
-::: {.callout-warning}
-The default credentials are `user` / `pass`. Change `ADMIN_USERNAME` and `ADMIN_PASSWORD` in the sketch before flashing to a production device.
-:::
+!!! warning
+    The default credentials are `user` / `pass`. Change `ADMIN_USERNAME` and `ADMIN_PASSWORD` in the sketch before flashing to a production device.
 
 - Settings page is protected with HTTP Basic Auth
 - HTTPS to DuckDNS uses `setInsecure()` (no cert validation). For strict TLS, add certificate pinning to `WiFiClientSecure`
@@ -251,7 +241,7 @@ Replace `DEVICE_IP` with your device's IP address or `testduckNNN.local` hostnam
 ## Key Constants
 
 | Constant | Value | Notes |
-|----------|-------|-------|
+| --- | --- | --- |
 | `EEPROM_SIZE` | `512` | Base; actual capacity computed at runtime |
 | `DDNS_LOG_SIZE` | `8` | RAM log ring entries |
 | `PERSISTENT_LOG_SIZE` | `20` | EEPROM ring entries |
@@ -295,7 +285,7 @@ Replace `DEVICE_IP` with your device's IP address or `testduckNNN.local` hostnam
 
 ## License
 
-MIT License — see [LICENSE](LICENSE).
+MIT License — see [LICENSE](https://github.com/ToledoEM/espduckdns/blob/main/LICENSE).
 
 Adapted from the original ESP8266 DuckDNS client by Davide Gironi
 ([davidegironi.blogspot.com](https://davidegironi.blogspot.com/2017/02/duck-dns-esp8266-mini-wifi-client.html)).

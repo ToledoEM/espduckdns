@@ -1,0 +1,4 @@
+/* Slightly darker background for code blocks and inline code */
+:root > * {
+  --md-code-bg-color: #e8ebee;
+}

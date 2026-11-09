@@ -7,7 +7,7 @@ This project is an open-source, standalone Dynamic DNS (DDNS) client for **DuckD
 
 **Version with NTP and persistent logging**
 *Current Version stable stable with uptime of >month*
-![Web Interface Status Page](images/stableuptime.png)
+![Web Interface Status Page](docs/images/stableuptime.png)
 
 
 ## Configuration Stored in EEPROM
@@ -104,9 +104,9 @@ The first time you power on the ESP32, it will automatically enter configuration
 
 ### Device Configuration
 
-![Settings Page](images/webclient_3.png)
+![Settings Page](docs/images/webclient_3.png)
 
-![Settings Page](images/webclient_4.png)
+![Settings Page](docs/images/webclient_4.png)
 
 
 Once the device is connected to your network, you need to configure it.
@@ -144,7 +144,7 @@ That's it! The ESP32 is now fully configured.
 ---
 
 
-![Json](images/apijson.png)
+![Json](docs/images/apijson.png)
 
 ```json
 {
